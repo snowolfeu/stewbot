@@ -1007,7 +1007,8 @@ class Browser( BaseClass ):
 			self.browser['wpAddress'] = address
 			self.browser['wpReason']  = reason
 			self.browser['wpExpiryOther'] = expiry
-			self.browser.find_control( 'wpAnonOnly' ).items[0].selected = anononly
+	## commenting out the line below, as I like my global blocks to not be anon-only, hope that it works
+			#self.browser.find_control( 'wpAnonOnly' ).items[0].selected = anononly
 			self.submit()
 
 		# unblock

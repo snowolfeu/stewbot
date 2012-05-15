@@ -654,9 +654,10 @@ class Stewardbot( BaseClass ):
 
 		# print relevant links
 		if self.isAddress( args[USER] ):
-			self.respond( data, 'http://toolserver.org/~pathoschild/stalktoy?target=%s | http://toolserver.org/~luxo/contributions/contributions.php?user=%s&blocks=true | \x0314http://whois.domaintools.com/%s\x03 | \x0304http://meta.wikimedia.org/wiki/Special:GlobalBlock?wpAddress=%s&wpReason=crosswiki+abuse\x03' % ( args[USER], args[USER], args[USER], args[USER] ))
+			self.respond( data, 'http://whatismyipaddress.com/ip/%s | https://toolserver.org/~luxo/contributions/contributions.php?user=%s&blocks=true | https://toolserver.org/~pathoschild/stalktoy?target=%s | \x0304https://meta.wikimedia.org/wiki/Special:GlobalBlock?wpAddress=%s&wpReason=crosswiki+abuse\x03' % ( args[USER], args[USER], args[USER], args[USER] ))
+
 		else:
-			self.respond( data, 'http://toolserver.org/~pathoschild/stalktoy?%s | http://toolserver.org/~luxo/contributions/contributions.php?%s | \x0304http://meta.wikimedia.org/wiki/Special:CentralAuth?%s\x03' % (self.UrlEncode({'target':args[USER]}), self.UrlEncode({'user':args[USER], 'blocks':'true'}), self.UrlEncode({'target':args[USER]})) )
+			self.respond( data, 'https://toolserver.org/~luxo/contributions/contributions.php?%s | https://toolserver.org/~pathoschild/stalktoy?%s | \x0304https://meta.wikimedia.org/wiki/Special:CentralAuth?%s\x03' % (self.UrlEncode({'user':args[USER], 'blocks':'true'}), self.UrlEncode({'target':args[USER]}), self.UrlEncode({'target':args[USER]})) )
 
 
 	###################
@@ -750,7 +751,8 @@ class Stewardbot( BaseClass ):
 				self.respond( data, 'Listing %s edits on %s wikis by %s\'s unified accounts..' % (total_edits, count_wikis, args[USER]), nick = False )
 				for wiki in wikis:
 					url = self.browser.getUrl( prefix = wiki['wiki'], path = path )
-					self.respond( data, "%s:  %s edits at http://%s" % (count_wikis, wiki['edits'], url), nick = False )
+	## removed the http:// from http://%
+					self.respond( data, "%s:  %s edits at %s" % (count_wikis, wiki['edits'], url), nick = False )
 					count_wikis -= 1
 
 			# regular mode
@@ -759,7 +761,7 @@ class Stewardbot( BaseClass ):
 				self.respondPrivately( data, 'Listing %s edits on %s wikis by %s\'s unified accounts..' % (total_edits, count_wikis, args[USER]) )
 				for wiki in wikis:
 					url = self.browser.getUrl( prefix = wiki['wiki'], path = path )
-					self.respondPrivately( data, "%s:  %s edits at http://%s" % (count_wikis, wiki['edits'], url) )
+					self.respondPrivately( data, "%s:  %s edits at %s" % (count_wikis, wiki['edits'], url) )
 					count_wikis -= 1
 
 			# too many, faster to post online
@@ -1033,7 +1035,7 @@ class Stewardbot( BaseClass ):
 		try:
 			if self.browser.centralAuth(
 				user   = user,
-				reason = 'crosswiki abuse<!--[[StewardBot|bot]]-->',
+				reason = 'crosswiki abuse',
 				lock   = True,
 				hide   = global_hide,
 				ignoreUnchanged = True
@@ -1092,12 +1094,12 @@ class Stewardbot( BaseClass ):
 				# block options
 				if hide and (not edits or hideWhenEdits):
 					result   = 'blockhidden'
-					reason   = 'crosswiki abuse<!--[[m:SH#lock|globally locked & hidden]]; [[m:User:StewardBot|about bot]]-->'
+					reason   = 'Local suppression of a globally oversighted account'
 					reblock  = True
 					hidename = True
 				else:
 					result   = 'blocked'
-					reason   = 'crosswiki abuse<!--[[m:SH#lock|globally locked]]; [[m:User:StewardBot|about bot]]-->'
+					reason   = 'crosswiki abuse'
 					reblock  = reblock
 					hidename = False
 
@@ -1200,7 +1202,8 @@ class Stewardbot( BaseClass ):
 					user    = user,
 					expiry  = args[EXPIRY],
 					reason  = args[REASON],
-					noemail = True,
+	## switched the line below from True to False, I don't generally block with email disabled
+					noemail = False,
 					hidename = hidename,
 					reblock = reblock
 				)

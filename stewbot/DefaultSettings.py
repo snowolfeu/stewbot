@@ -43,70 +43,18 @@ config = StrictDict({
 		########
 		# regexes to match against full *!*@* masks
 		'ignore_masks':[
-			'@wikimedia/bot/SULWatcher',
-			'@unaffiliated/az1568/bot/'
+			'@wikimedia/Example3',
 		],
 
 		# level, hostmask, wiki lookup
 		'wiki_names_by_level':{
 			# whitelisted users (can issue some commands, ask for !commit on others)
 			ACCESS_WHITELISTED:{
-				# stewards
-				'wikimedia/andre-engels':'Andre Engels',
-				'wikimedia/Avraham':'Avraham',
-				'wikimedia/Bastique':'Bastique',
-				'wikipedia/darkoneko':'Darkoneko',
-				'wikimedia/DerHexer':'DerHexer',
-				'Wikimedia/Dferg':'Dferg',
-				'wikimedia/Drini':'Drini',
-				'wikimedia/dungodung':'Dungodungo',
-				'wikimedia/effeietsanders':'Effeietsanders',
-				'wikimedia/erwin':'Erwin',
-				'wikimedia/guillom':'Guillom',
-				'wikipedia/jdelanoy':'J.delanoy',
-				'wikimedia/jhs':'Jon Harald S�by',
-				'wikipedia/Jyothis':'Jyothis',
-				'wikimedia/Kylu':'Kylu',
-				'kamfjord.org':'Laaknor',
-				'wikipedia/Mardetanha':'Mardetanha',
-				'wikimedia/Melos':'Melos',
-				'Wikimedia/Mercy':'Mercy',
-				'wikibooks/mike.lifeguard':'Mike.lifeguard',
-				'wikimedia/Millosh':'Millosh',
-				'wikipedia/Nick1915':'Nick1915',
-				'wikimedia/Shanel':'Shanel',
-				'wikimedia/Sir-Lestaty-de-Lioncourt':'Sir Lestaty de Lioncourt',
-				'wikipedia/sj':'Sj',
-				'wikimedia/Thogo':'Thogo',
-				'wikipedia/Wutsje':'Wutsje',
-
-				# guests
-				'wikia/vstf/countervandalism.user.Charitwo':'Charitwo',
-				'wikimedia/Az1568':'Az1568',
-				'wikipedia/Bsadowski1':'Bsadowski1',
-				'wikipedia/Chris-G':'Chris G',
-				'wikipedia/fr33kman':'Fr33kman',
-				'wikimedia/GrooveDog':'GrooveDog',
-				'wikia/vstf/countervandalism.user.Grunny':'Grunny',
-				'wikimedia/Innv':'Innv',
-				'wikimedia/Jamesofur':'Jamesofur',
-				'Wikimedia/Kanonkas':'Kanonkas',
-				'wikimedia/Maximillion-Pegasus':'Maximillion Pegasus',
-				'wikimedia/MuZemike':'Muzemike',
-				'wikimedia/nifky':'Nifky?',
-				'wikimedia/Juliancolton':'Juliancolton',
-				'wikipedia/NuclearWarfare':'NuclearWarfare',
-				'wikimedia/pmlineditor':'Pmlineditor',
-				'wikipedia/Prodego':'Prodego',
-				'wiktionary/Razorflame':'Razorflame',
-				'wikipedia/The-Thing-That-Should-Not-Be':'The Thing That Should Not Be',
-				'wikipedia/Tiptoety':'Tiptoety',
-				'firefox/community/pilif12p':'Pilif12p'
+				'wikimedia/Example2':'Example 2'
 			},
 			# operators (full access)
 			ACCESS_OPERATOR:{
-				'wikimedia/Pathoschild':'Pathoschild',
-				#'wikimedia/Shanel':'Shanel'
+				'wikimedia/Example':'Example'
 			}
 		},
 		'users_by_level':None, ## generated in constructor from above settings
@@ -226,7 +174,7 @@ documentation = {
 
 	# other
 	'exit':'disconnect from IRC and end process; syntax is \'!exit\' or \'!exit quit reason\'',
-	#'nuke':'revert all edits and moves by a user, and delete page creations',
+	'nuke':'revert all edits and moves by a user, and delete page creations',
 	'reset':'clear web sessions, reset base URL, disconnect from IRC and reconnect; syntax is \'!reset\' or \'!reset quit reason\'',
 	'setrights':'add or remove a user\'s right-groups. Groups are listed with commas, and by default each group is added. Add \'+\' or \'-\' before a name to switch between addition and removal for subsequent groups. Syntax is \'!setrights user > +right1,right2,-right3\' or \'!setrights user > +right1,-right2,+right3 > reason\'',
 }
