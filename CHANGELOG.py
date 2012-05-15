@@ -1,4 +1,16 @@
 """
+2012-05-15 r23
+	- moved __config__.example.py to __config__.py
+	- removed the lenghty list of stewards from default setttings
+	- enabled nuke, needs to be tested tho
+	- modified the !links command
+	- fixed the http://http:// bug
+	- tweaked the !stab blockreason
+	- tweaked the default lock reason
+	- disabled noemail on blocks
+	- global blocks no longer anon-only
+	- readme updated
+	
 2011-04-01 r22
 	- new configuration: toggle handling of !commit command;
 	- use new API modules for getGlobalRights;
