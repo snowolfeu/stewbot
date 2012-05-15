@@ -4,6 +4,5 @@ organically from a single-file script based on pywikipedia into an independent
 modularized framework, so there are still issues with tight coupling and messy
 code.
 
-To configure stewbot, rename stewardbot/__config__.example.py to
-stewardbot/__config__.py and change the values therein. (You can peek at the
-default config values in stewbot/DefaultSettings.py.)
+To configure stewbot, open stewardbot/__config__.py and change the values therein.
+(You can peek at the default config values in stewbot/DefaultSettings.py.)
