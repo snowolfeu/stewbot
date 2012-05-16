@@ -30,9 +30,9 @@ class Bash( BaseClass ):
 		text = text[text.rindex('<pre><nowiki>') + len('<pre><nowiki>'):text.rindex('</nowiki></pre>')]
 		text = re.sub(u'<a href=".+">', '', text)
 		text = text.replace('</a>', '')
-		text = re.sub("\n%( |\t)+\n", "\n%\n", text)
-		
-		self.new = text.split('\n%\n')[1:-1]
+		text = re.sub("\n%( |\t)*\n", "{[$MARKER$]}", text)
+		text = text.replace('\n', ' ')
+		self.new = text.split('{[$MARKER$]}')[1:-1]
 		
 	#	self.new = [
 	#		# direct quotes
